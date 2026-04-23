@@ -1,0 +1,175 @@
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+  background: #111;
+  aspect-ratio: 2 / 3;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/*  hover lift like Netflix */
+.movie-card:hover {
+  transform: scale(1.06);
+  z-index: 10;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Skeleton wrapper */
+.poster-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.poster-wrapper .react-loading-skeleton {
+  background-color: #1a1a1a !important;
+}
+
+.poster-wrapper .react-loading-skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  ) !important;
+}
+
+/* Image */
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* smooth fade-in */
+.poster.hide {
+  opacity: 0;
+}
+
+.poster.show {
+  opacity: 1;
+}
+
+/* zoom only on hover */
+.movie-card:hover .poster.show {
+  transform: scale(1.08);
+}
+
+/*Trailer overlay (slightly dim background for cinematic feel) */
+.trailer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 2;
+  animation: fadeIn 0.3s ease;
+}
+
+/* overlay gradient (stronger + cleaner like Netflix) */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px 10px;
+  color: white;
+  z-index: 3;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95),
+    rgba(0, 0, 0, 0.4),
+    transparent
+  );
+
+  backdrop-filter: blur(2px);
+}
+
+/* title styling */
+.overlay h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  /* clamp long titles */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ⭐ Favorite button upgrade */
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0, 0, 0, 0.6);
+  color: gold;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* smooth trailer fade */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 6;
+
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  color: white;
+  background: linear-gradient(135deg, #ff3d3d, #ff7a18);
+
+  border-radius: 6px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* FIX: control card sizing inside grid */
+.movie-card {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/* Mobile fix */
+@media (max-width: 480px) {
+  .movie-card {
+    max-width: 100%;
+  }
+}

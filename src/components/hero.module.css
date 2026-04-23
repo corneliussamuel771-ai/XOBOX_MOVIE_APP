@@ -1,0 +1,19 @@
+.iframe-cover-container {
+  position: relative;
+  width: 100%;     /* or any fixed width */
+  height: 500px;   /* or any fixed height */
+  overflow: hidden;
+}
+
+.iframe-cover-container iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200vh;    /* force it to be wider/taller than parent */
+  height: 200vh;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover; /* added for forward compatibility */
+}
+

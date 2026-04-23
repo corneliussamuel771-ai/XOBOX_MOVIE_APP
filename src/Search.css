@@ -1,0 +1,175 @@
+/* =========================
+   SEARCH PAGE CONTAINER
+========================= */
+.search-page {
+  padding: 100px 40px 40px; /* space from navbar */
+  min-height: 100vh;
+  background: #0f1115;
+  color: #ffffff;
+}
+
+/* =========================
+   MOVIES GRID
+========================= */
+.movies-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+/* =========================
+   MOVIE CARD
+========================= */
+.movie-card {
+  text-decoration: none;
+  color: inherit;
+  background: #161a20;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Hover effect */
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   MOVIE IMAGE
+========================= */
+.movie-card img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.movie-card:hover img {
+  transform: scale(1.08);
+}
+
+/* =========================
+   MOVIE INFO OVERLAY
+========================= */
+.movie-info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Title */
+.movie-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #ffffff;
+
+  /* truncate long titles */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Rating */
+.movie-info p {
+  font-size: 14px;
+  color: #f5c518;
+  font-weight: 500;
+}
+
+/* =========================
+   NICE GRADIENT FADE (OPTIONAL)
+========================= */
+.movie-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 768px) {
+  .search-page {
+    padding: 90px 20px 30px;
+  }
+
+  .movies-grid {
+    gap: 18px;
+  }
+
+  .movie-card img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .movie-card img {
+    height: 200px;
+  }
+
+  .movie-info h3 {
+    font-size: 13px;
+  }
+}
+
+/* MEDIA CONTAINER */
+.media-container {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* IMAGE */
+.media-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+/* TRAILER */
+.trailer-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Smooth fade */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* CARD HOVER SCALE */
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  z-index: 5;
+}
+
+/* IMAGE FADE OUT WHEN PLAYING */
+.movie-card:hover img {
+  opacity: 0;
+}
