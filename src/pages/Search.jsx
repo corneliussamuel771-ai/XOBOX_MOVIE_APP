@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-import "../search.css";
+import "..//search.css";
 
 const Search = () => {
   const [movies, setMovies] = useState([]);
